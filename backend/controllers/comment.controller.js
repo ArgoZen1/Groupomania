@@ -2,12 +2,18 @@ const models = require('../models/index');
 
 
 exports.readComment = (req, res) => {
-    models.comments.findAll({where: {postId: req.params.id}})
-  .then(comments => {
-      console.log(comments);
-      res.status(200).json({data: comments});
-  })
-  .catch(error => res.status(400).json({ error }));
+    models.comments.findAll({
+        include:{
+            
+            model:models.posts
+        },
+        
+        
+        })
+        
+    .then(comments => res.status(200).json(comments))
+    .catch(error => res.status(500).json(error))
+
 }
 
 exports.createComment = (req, res) => {
@@ -17,6 +23,7 @@ exports.createComment = (req, res) => {
         });
         return;
       }
+
       const comment = {
           postId: req.body.postId,
           userId: req.body.userId,
@@ -36,8 +43,8 @@ exports.createComment = (req, res) => {
 }
 
 exports.updateComment = (req, res) => {
-    models.comments.update({ comment: req.body.comment }, { where: {id: req.params.id}})
-   .then(() => res.status(200).send({ message: "modification ok" }))
+    models.comments.update({ message: req.body.message }, { where: {id: req.body.id}})
+   .then((data) => res.status(200).send({ data, message: "modification ok" }))
    .catch((err) => res.status(500).json(err))
 }
 

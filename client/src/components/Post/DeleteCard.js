@@ -8,7 +8,7 @@ const DeleteCard = (props) => {
 
     const deleteQuote = () => {
         dispatch(deletePost(props.id))
-        window.location.reload();
+        window.location.reload()
     }
 
     return (

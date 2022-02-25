@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { getComments } from '../../actions/comment.actions';
 import { updatePost } from '../../actions/post.actions';
 
 import { dateParser, isEmpty } from '../Utils';
@@ -9,6 +10,7 @@ import DeleteCard from './DeleteCard';
 
 const Card = ({ post }) => {
     // ici nous avons un spinner, en attendant de récupérer notre userData 
+    
     const [isLoading, setIsLoading] = useState(true);
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
@@ -17,9 +19,11 @@ const Card = ({ post }) => {
     const userData = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
 
-    const updateItem =  () => {
+    const updateItem = async () => {
+        
        if (textUpdate) {
-            dispatch(updatePost(post.id, textUpdate))
+        //    setTextUpdate(textUpdate);
+            dispatch(updatePost(post.id, textUpdate)) 
             window.location.reload()
            
        }
@@ -29,6 +33,8 @@ const Card = ({ post }) => {
     useEffect(() => {
         !isEmpty(usersData[0]) && setIsLoading(false);
     }, [usersData])
+
+    
 
     return (
         <li className='card-container' key={post.id}>
@@ -95,11 +101,10 @@ const Card = ({ post }) => {
                             <div className='comment-icon'>
                                 <img onClick={() => setShowComments(!showComments)} 
                                 src='./img/message1.svg' 
-                                alt='comment' />
-                                <span>{post.comments}</span>
+                                alt='comment' />  
                             </div>
-                            {showComments && <CardComments post={post} />}
                         </div>
+                        {showComments && <CardComments post={post} />}
                     </div>
                 </>
             )}

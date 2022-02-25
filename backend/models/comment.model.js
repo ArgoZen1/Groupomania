@@ -1,19 +1,31 @@
+const { DB } = require("./index")
+
 module.exports = (sequelize, DataTypes) => {
+
+    
 
 
     const comment = sequelize.define("comment", {
-       
-        postId: {
-            type: DataTypes.INTEGER  
-        },
-        userId: {
-            type: DataTypes.INTEGER
-        },
-        message: {
-            type: DataTypes.STRING,  
-        }
+        
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey : true,
+            autoIncrement :true
+          }, 
+          message: {
+            type: DataTypes.STRING,
+            allowNull: false
+          },
+          
+          
+        }, {
+          sequelize, 
+          modelName: 'comment' 
         
     });
 
     return comment;
 };
+
+;

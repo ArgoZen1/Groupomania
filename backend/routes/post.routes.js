@@ -5,7 +5,7 @@ const multer = require('../middleware/multer.config');
 
 router.get('/', postController.readPost);
 router.post('/', multer, postController.createPost);
-router.put('/:id', postController.updatePost);
+router.put('/:id', multer, postController.updatePost);
 router.delete('/:id', postController.deletePost);
 
 

@@ -1,21 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { isEmpty } from '../Utils';
+
+
+import { addComment, getPosts } from '../../actions/post.actions';
+
+import { isEmpty, timestampParser } from '../Utils';
+import EditDeleteComment from './EditDeleteComment';
 
 const CardComments = ({ post }) => {
+    
     const [text, setText] = useState("")
+    
     const usersData = useSelector((state) => state.usersReducer);
-    const userData = useSelector((state) => state.usersReducer);
+    const userData = useSelector((state) => state.userReducer);
+    const posts = useSelector((state) => state.postReducer);
+    
     const dispatch = useDispatch();
+   
 
-    const handleComment = () => {
+    console.log(post.id)
 
+    const handleComment = (e) => {
+       e.preventDefault();
+       if (text) {
+        dispatch(addComment(post.id, userData.id, text))
+        .then(() => dispatch(getPosts()))
+        .then(() => setText(''));
+          
+      }
     }
-    console.log(post)
+
+    post.comments.map((post) => {
+        console.log(post)
+    })
+    
+   
 
     return (
         <div className='comments-container'>
             {post.comments.map((comment) => { 
+                
                 return (
                     <div className={comment.userId === userData.id ? 
                     "comment-container client" : "comment-container"} key={comment.id}>
@@ -26,10 +50,36 @@ const CardComments = ({ post }) => {
                         }).join("")
                         } alt="commenter-pic" />
                         </div>
+                        <div className='right-part'>
+                            <div className='comment-header'>
+                                <div className='pseudo'>
+                                  <h3>{!isEmpty(usersData[0]) && usersData.map((user) => {
+                            if (user.id === comment.userId) return user.firstname + " " + user.name;
+                            else return null
+                        }).join("")
+                        }</h3>
+                          
+                                </div>
+                                <span>{timestampParser(comment.createdAt)}</span>
+                            </div>
+                            <p>{comment.message}</p>
+                            <EditDeleteComment comment={comment} postId={post.id} />
+                        </div>
                     </div>
                 )
             
             })}
+            {userData.id && (
+                <form action='' onSubmit={handleComment} className="comment-form">
+                    <input type="text" 
+                    name="text" 
+                    onChange={(e) => setText(e.target.value)} 
+                    value={text} 
+                    placeholder="Laisser un commentaire" />
+                    <br />
+                    <input type="submit" value="Envoyer" />
+                </form>
+            )}
         </div>
     );
 };

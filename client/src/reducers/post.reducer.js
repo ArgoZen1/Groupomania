@@ -1,4 +1,5 @@
-import { DELETE_POST, GET_POSTS, UPDATE_POST } from "../actions/post.actions";
+
+import { DELETE_COMMENT, DELETE_POST, EDIT_COMMENT, GET_POSTS, UPDATE_POST } from "../actions/post.actions";
 
 const initialState = {};
 
@@ -9,6 +10,7 @@ export default function postReducer(state = initialState, action) {
 
         case UPDATE_POST:
         return state.data.map((post) => {
+            
             if (post.id === action.payload.postId) {
                 return { 
                 ...post,
@@ -18,7 +20,39 @@ export default function postReducer(state = initialState, action) {
         })
         case DELETE_POST:
             return state.filter((post) => post.id !== action.payload.postId);
-        
+        case EDIT_COMMENT:
+            return state.data.map((post) => {
+                console.log(post.comments)
+                // une premiere recherche pour trouver le post
+                if (post.id === action.payload.postId) {
+                    return {
+                        ...post,
+                        // une recherche pour trouver le commentaire
+                        comments: post.comments.map((comment) => {
+                            console.log(comment)
+                            if (comment.id === action.payload.id) {
+                                return {
+                                    ...comment, 
+                                    message: action.payload.text
+                                }
+                            } else {
+                                return comment
+                            }
+                        }),
+                    }
+                } else return post;
+            })
+            case DELETE_COMMENT:
+                return state.data.map((post) => {
+                   if (post.id !== action.payload.postId) {
+                   return {
+                    ...post,
+                    comments: post.comments.filter((comment) => comment.id !== action.payload.id)
+                }
+                } else return post
+            })
+                
+
            default:
                return state;
    }

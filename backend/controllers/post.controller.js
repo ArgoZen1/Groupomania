@@ -7,10 +7,15 @@ const { uploadErrors } = require("../utils/errors.utils");
 
 exports.readPost = (req, res) => {
     models.posts.findAll({order: [
-        ['createdAt', 'DESC'],
-    ]})
+        ['createdAt', 'DESC']],
+        include:{
+            model:models.comments,
+            
+        },
+        
+    })
     .then(articles => {
-        console.log(articles);
+        
         res.status(200).json({data: articles});
     })
     .catch(error => res.status(400).json({ error }));
@@ -27,7 +32,8 @@ exports.createPost = (req, res) => {
           userId: req.body.userId,
           picture: req.file,
           vidéo: req.body.video,
-          message: req.body.message
+          message: req.body.message,
+          
       }
       console.log(req.body)
       models.posts.create(post)
@@ -44,7 +50,7 @@ exports.createPost = (req, res) => {
 
 exports.updatePost = (req, res) => {
     models.posts.update({ message: req.body.message, title: req.body.title, picture: req.body.picture, video: req.body.video }, { where: {id: req.params.id}})
-   .then(() => res.status(200).send({ message: "modification ok" }))
+   .then(() => res.status(200).send({ data, message: "modification ok" }))
    .catch((err) => res.status(500).json(err))
 }
 
