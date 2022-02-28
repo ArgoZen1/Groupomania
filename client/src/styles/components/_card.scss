@@ -1,7 +1,7 @@
 .card-container {
   display: grid;
   grid-template-columns: 66px 1fr;
-  border: 2px solid $color-2;
+  border: 1px solid #d1515a;
   margin: 10px;
   padding: 16px;
   border-radius: 20px;
@@ -161,6 +161,29 @@
         padding: 5px 9px;
         margin-left: 5px;
         background: $color-2;
+        border-radius: 50px;
+        transition: 0.1s;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.07);
+        }
+
+        img {
+          height: 16px;
+          width: 16px;
+          transform: translateY(3px);
+        }
+      }
+    }
+    .button-container-admin {
+      justify-content: flex-end;
+      display: flex;
+
+      div {
+        padding: 5px 9px;
+        margin-left: 5px;
+        background: #d1515a;
         border-radius: 50px;
         transition: 0.1s;
         cursor: pointer;

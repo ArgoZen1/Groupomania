@@ -127,6 +127,7 @@ const SignUpForm = () => {
                     />
                     <div className='email error'></div>
                     <div className='mail error'></div>
+                    <br />
                     <label htmlFor='password'>Mot de passe</label>
                     <br />
                     <input
@@ -148,6 +149,7 @@ const SignUpForm = () => {
                         value={controlPassword}
                     />
                     <div className='password-confirm error'></div>
+                    <br />
                     <input type="submit" value="Valider Inscription" />
                 </form>
             )}

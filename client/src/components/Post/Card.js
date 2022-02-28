@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getComments } from '../../actions/comment.actions';
-import { updatePost } from '../../actions/post.actions';
+
+
+import { getPosts, updatePost } from '../../actions/post.actions';
 
 import { dateParser, isEmpty } from '../Utils';
 import CardComments from './CardComments';
 import DeleteCard from './DeleteCard';
 
 const Card = ({ post }) => {
+
+
+    
+
     // ici nous avons un spinner, en attendant de récupérer notre userData 
     
     const [isLoading, setIsLoading] = useState(true);
@@ -22,10 +27,10 @@ const Card = ({ post }) => {
     const updateItem = async () => {
         
        if (textUpdate) {
-        //    setTextUpdate(textUpdate);
-            dispatch(updatePost(post.id, textUpdate)) 
-            window.location.reload()
-           
+            await dispatch(updatePost(post.id, textUpdate))
+            dispatch(getPosts())
+            
+            
        }
        setIsUpdated(false);
     }
@@ -64,7 +69,7 @@ const Card = ({ post }) => {
                             <span>{dateParser(post.createdAt)}</span>
                         </div>
                         {isUpdated === false && <p>{post.message}</p>}
-                        {isUpdated &&(
+                        {isUpdated && (
                           <div className='update-post'>
                               <textarea 
                                   defaultValue={post.message}
@@ -89,9 +94,20 @@ const Card = ({ post }) => {
                                 title={post.id}
                             ></iframe>
                         )}
-                        {userData.id === post.userId && (
+                        {userData.id === post.userId && !userData.admin && (
+                            
                             <div className='button-container'>
                                 <div onClick={() => setIsUpdated(!isUpdated)}>
+                                    <img src='./img/edit.svg' alt='icon edit' />
+                                </div>
+                                <DeleteCard id={post.id} />
+                            </div>
+                        )}
+                        {userData.admin && (
+                            
+                            <div className='button-container-admin'> 
+                            
+                            <div onClick={() => setIsUpdated(!isUpdated)}>
                                     <img src='./img/edit.svg' alt='icon edit' />
                                 </div>
                                 <DeleteCard id={post.id} />

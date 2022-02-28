@@ -13,7 +13,7 @@ const CardComments = ({ post }) => {
     
     const usersData = useSelector((state) => state.usersReducer);
     const userData = useSelector((state) => state.userReducer);
-    const posts = useSelector((state) => state.postReducer);
+    
     
     const dispatch = useDispatch();
    
@@ -30,11 +30,7 @@ const CardComments = ({ post }) => {
       }
     }
 
-    post.comments.map((post) => {
-        console.log(post)
-    })
-    
-   
+     
 
     return (
         <div className='comments-container'>

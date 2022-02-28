@@ -18,11 +18,12 @@ const SignInForm = () => {
                  email,
                  password
              },
-             console
+             
          })
          .then((res) => {
-             if(res.data.errors) {
-                 emailPasswordError.innerHTML = res.data.errors;
+             console.log(res.data.error)
+             if(res.data.error) {
+                 emailPasswordError.innerHTML = res.data.error;
                  
              } else {
                  window.location = "/"

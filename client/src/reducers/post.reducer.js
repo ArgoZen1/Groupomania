@@ -9,7 +9,7 @@ export default function postReducer(state = initialState, action) {
            return action.payload;
 
         case UPDATE_POST:
-        return state.data.map((post) => {
+        return state.map((post) => {
             
             if (post.id === action.payload.postId) {
                 return { 
@@ -20,8 +20,10 @@ export default function postReducer(state = initialState, action) {
         })
         case DELETE_POST:
             return state.filter((post) => post.id !== action.payload.postId);
+            
+            
         case EDIT_COMMENT:
-            return state.data.map((post) => {
+            return state.map((post) => {
                 console.log(post.comments)
                 // une premiere recherche pour trouver le post
                 if (post.id === action.payload.postId) {
@@ -43,7 +45,8 @@ export default function postReducer(state = initialState, action) {
                 } else return post;
             })
             case DELETE_COMMENT:
-                return state.data.map((post) => {
+                return state.map((post) => {
+                    console.log(post)
                    if (post.id !== action.payload.postId) {
                    return {
                     ...post,

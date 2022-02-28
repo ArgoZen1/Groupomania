@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Log from '../components/Log'
 import { UidContext } from '../components/AppContext';
-import UpdateProfil from '../components/Profil/UpdateProfil';
+import UpdateProfil from '../components/Profil/UpdateDeleteProfil';
 
 
 
@@ -25,7 +25,7 @@ const Profil = () => {
 
                 <Log signin={false} signup={true} />
                 <div className="img-container">
-                    <img className='img-logo' src="./img/icon-blue.png" alt="logo groupomania" />
+                    <img className='img-logo' src="./img/icon-logo2.png" alt="logo groupomania" />
                 </div>
 
             </div>

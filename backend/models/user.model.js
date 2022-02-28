@@ -16,11 +16,13 @@ const user = sequelize.define("user", {
     },
     email: {
         type : DataTypes.STRING,
-        allowNull: false,   
+        allowNull: false,
+        unique: true  
         
     },
     password: {
         type : DataTypes.STRING,
+
         allowNull: false
     },
     picture: {
@@ -32,10 +34,10 @@ const user = sequelize.define("user", {
         type : DataTypes.STRING,
         allowNull: true
     },
-    likes : {
-        type : DataTypes.STRING,
-        allowNull: true
-    }
+    admin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+      }
     
   
 });

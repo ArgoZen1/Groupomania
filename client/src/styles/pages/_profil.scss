@@ -4,6 +4,8 @@
 
   .icons {
     top: 55px;
+    left:0;
+    
   }
 
   .log-container {
@@ -18,13 +20,14 @@
 
   .connection-form {
     border: none;
-    background: $color-4;
+    background: white;
     min-width: 490px;
     width: 90%;
     text-align: center;
     margin: 0 auto;
     padding: 20px;
     border-radius: 20px;
+    border: solid 1px #091f43;
 
     @media screen and(max-width: 550px) {
       min-width: 200px;
@@ -87,6 +90,7 @@
           font-size: 1.2rem;
           font-family: $font-2;
           border-radius: 20px;
+          border: solid  1px silver;
 
           &:focus {
             box-shadow: 0 0 3px rgba(51, 51, 51, 0.2);
@@ -141,6 +145,8 @@
     }
     .left-part {
       text-align: center;
+      background-color: white;
+      border: solid 1px #091f43;
 
       h3 {
         margin-bottom: 12px;
@@ -176,6 +182,7 @@
           transform: translate(-3px, -50%);
           cursor: pointer;
           padding: 10px 20px;
+          display: none;
 
           @media screen and(max-width: 1121px) {
             opacity: 0;
@@ -199,6 +206,8 @@
     .right-part {
       text-align: center;
       padding: 20px 40px;
+      background-color: white;
+      border: solid 1px #091f43;
       h3 {
         margin-bottom: 12px;
       }

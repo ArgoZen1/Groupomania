@@ -2,6 +2,8 @@ import axios from "axios";
 
 // posts
 export const GET_POSTS = "GET_POSTS";
+export const GET_ALL_POSTS = "GET_ALL_POSTS";
+export const ADD_POST = "ADD_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 
@@ -10,47 +12,61 @@ export const ADD_COMMENT = "ADD_COMMENT";
 export const EDIT_COMMENT = "EDIT_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT"
 
-export const getPosts = () => {
-    return (dispatch) => {
+export const getPosts = (num) => {
+    return async (dispatch) => {
         return axios 
         .get(`${process.env.REACT_APP_API_URL}api/post`)
         .then((res) => {
-            
-            dispatch({ type: GET_POSTS, payload: res.data })
+            console.log(res)
+            const array = res.data.data.slice(0, num);
+            console.log(array)
+            dispatch({ type: GET_POSTS, payload: array })
+            dispatch({ type: GET_ALL_POSTS, payload: res.data });
         })
         .catch((err) => console.log(err))
     }
 }
 
-export const updatePost = (postId, message) => {
+export const addPost = (data) => {
     return (dispatch) => {
+        return axios 
+        .post(`${process.env.REACT_APP_API_URL}api/post`, data)
+        
+    }
+}
+
+export const updatePost = (id, message) => {
+    return async (dispatch) => {
         return axios({
             method: 'put',
-            url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
+            url: `${process.env.REACT_APP_API_URL}api/post/${id}`,
             data: { message }
         })
         .then((res) => {
-            dispatch({ type: UPDATE_POST, payload: { message, postId }})
+            console.log(res)
+            dispatch({ type: UPDATE_POST, payload: { message, id }})
         })
         .catch((err) => console.log(err));
     }
 }
 
 export const deletePost = (postId) => {
-    return (dispatch) => {
+    console.log(postId)
+    return async (dispatch) => {
         return axios({
             method: 'delete',
-            url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
+            url: `${process.env.REACT_APP_API_URL}api/post/`+ postId,
         })
         .then((res) => {
-            dispatch({ type: DELETE_POST, payload: {  postId }})
+            console.log(res)
+            dispatch({ type: DELETE_POST, payload: {postId}})
         })
         .catch((err) => console.log(err));
     }
 }
 
 export const addComment = (postId, userId, message) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         return axios({
             method: 'post',
             url: `${process.env.REACT_APP_API_URL}api/comment/`,
@@ -65,7 +81,7 @@ export const addComment = (postId, userId, message) => {
 }
 
 export const editComment = (id, message) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         return axios({
             method: 'put',
             url: `${process.env.REACT_APP_API_URL}api/comment/${id}`,
@@ -80,7 +96,7 @@ export const editComment = (id, message) => {
 }
 
 export const deleteComment = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         return axios({
             method: 'delete',
             url: `${process.env.REACT_APP_API_URL}api/comment/${id}`,

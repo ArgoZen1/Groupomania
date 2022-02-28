@@ -7,27 +7,26 @@ import CardComments from './Post/CardComments';
 import { isEmpty } from './Utils';
 
 const Thread = () => {
-    const [loadCom, setLoadCom] = useState(true)
+    
     const [loadPost, setLoadPost] = useState(true)
     const dispatch = useDispatch();
-    const posts = useSelector((state) => state.postReducer);
+    const posts = useSelector((state) => state.allPostsReducer);
     const comments = useSelector((state) => state.commentReducer)
 
     useEffect(() => {
-        if (loadPost) {
+        
             dispatch(getPosts());
-            
-            setLoadPost(false)
-        }
+        
       }, [loadPost, dispatch])
 
-
+console.log(posts)
 
     return (
         <div className='thread-container'>
             <ul>
-                {!isEmpty(posts.data) &&
+                {!isEmpty(posts.data) && 
                     posts.data.map((post) => {
+                        
                         return <Card post={post} key={post.id} />
                     }) 
                 }

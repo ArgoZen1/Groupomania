@@ -3,7 +3,8 @@
   padding: 16px 40px;
   border-radius: 20px;
   position: relative;
-  background: $color-4;
+  background: whitesmoke;
+  border: solid 1px #091f43;
 
   i {
     font-size: 1.5rem;
@@ -51,6 +52,7 @@
       font-size: 1.4rem;
       padding: 12px 15px;
       border-radius: 20px 20px 6px 20px;
+      border: solid 1px silver;
     }
     .card-container {
       background: $white;

@@ -15,9 +15,9 @@ const Navbar = () => {
         <nav>
            <div className='nav-container'>
                <div className='logo'>
-                <NavLink to ="/">
+                <NavLink to ="/profil">
                  <div className='logo'>
-                 <img src="" alt='icon' /> 
+                 <img src="./img/icon.svg" alt='icon' /> 
                  <h3>Groupomania</h3>
                  </div>   
                 </NavLink>   

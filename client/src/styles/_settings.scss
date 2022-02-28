@@ -15,7 +15,7 @@ $font-1: "font-1", sans-serif;
 $font-2: "font-2", serif;
 $font-3: "font-3", serif;
 
-$color-1: #ff7b77;
+$color-1: #d1515a;
 $color-2: #ffd0c4;
 $color-3: rgb(0, 22, 44);
 $color-4: #fdeeee;
@@ -47,6 +47,7 @@ textarea {
   width: 270px;
   font-family: $font-1;
   background: $white;
+  
 }
 textarea {
   &:focus {

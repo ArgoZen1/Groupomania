@@ -1,20 +1,28 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deletePost } from '../../actions/post.actions';
+import { deletePost, getPosts } from '../../actions/post.actions';
 
 const DeleteCard = (props) => {
 
     const dispatch = useDispatch();
 
-    const deleteQuote = () => {
-        dispatch(deletePost(props.id))
-        window.location.reload()
+    const deleteQuote = async () => {
+         await dispatch(deletePost(props.id))
+         dispatch(getPosts())
+        
+        
+        
+        
     }
+    
+    
 
     return (
         <div onClick={() => {
             if (window.confirm('Voulez vous supprimer cet article ?')) {
                 deleteQuote();
+                
+                
             }
 
         }}>

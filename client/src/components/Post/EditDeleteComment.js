@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteComment, editComment } from '../../actions/post.actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteComment, editComment, getPosts } from '../../actions/post.actions';
 
 import { UidContext} from '../AppContext'
 
 const EditDeleteComment = ({ comment }) => {
+
+    const usersData = useSelector((state) => state.usersReducer);
+    const userData = useSelector((state) => state.userReducer);
 
     const [isAuthor, setIsAuthor] = useState(false);
     const [edit, setEdit] = useState(false);
@@ -15,25 +18,28 @@ const EditDeleteComment = ({ comment }) => {
     console.log(comment.userId)
     console.log(uid)
     console.log(comment.id)
-    const handleEdit = (e) => {
+    const handleEdit = async (e) => {
        e.preventDefault();
 
        if(text) {
-         dispatch(editComment(comment.id, text));
+         await dispatch(editComment(comment.id, text));
          setText('')
          setEdit(false);
-         window.location.reload()
+         dispatch(getPosts())
+         
        }
     }
 
-    const handleDelete = () => {
-      dispatch(deleteComment(comment.id))
-      window.location.reload()
+    const handleDelete = async () => {
+        
+      await dispatch(deleteComment(comment.id))
+      dispatch(getPosts())
+      
     }
 
       useEffect(() => {
           const CheckAuthor = () => {
-              if (uid === comment.userId) {
+              if (uid === comment.userId | userData.admin == true ) {
                   setIsAuthor(true);
                   
               }
@@ -58,8 +64,7 @@ const EditDeleteComment = ({ comment }) => {
                 <br />
                 <div className='btn'>
                    <span onClick={() => {
-                       if(window.confirm("voulez-vous supprimer ce commentaire ?")
-                       ) {
+                       if(window.confirm("voulez-vous supprimer ce commentaire ?")) {
                            handleDelete();
                        }
                    }}>

@@ -16,16 +16,17 @@ exports.userInfo = (req, res) => {
     .catch(err => res.status(404).json({ err }));
 }
 
-exports.updateUser = (req, res) => {
+exports.updateUser = async (req, res) => {
 
     if (req.file) {
+        
         models.users.findOne({ id: req.params.id })
             // Pour supprimer l'image dans le dossier images
             .then(profilImg => {
 
                 const fileName = profilImg.picture.split('/images')[1];
                 fs.unlink(`images/${fileName}`, (error) => {
-                    if (error) throw error;
+                    if (error) res.status(200);
                 })
             })
     }
