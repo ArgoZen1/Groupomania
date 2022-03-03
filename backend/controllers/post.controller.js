@@ -5,6 +5,7 @@ const multer = require('../middleware/multer.config');
 
 
 exports.readPost = (req, res) => {
+   
     models.posts.findAll({
         order: [
             ['createdAt', 'DESC']],

@@ -2,7 +2,6 @@
 const router = require('express').Router();
 const commentController = require('../controllers/comment.controller');
 
-
 // Comments CRUD
 router.get("/", commentController.readComment);
 router.post("/", commentController.createComment);

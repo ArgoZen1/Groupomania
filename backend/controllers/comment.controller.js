@@ -6,10 +6,7 @@ exports.readComment = (req, res) => {
 
             model: models.posts
         },
-
-
     })
-
         .then(comments => res.status(200).json(comments))
         .catch(error => res.status(500).json(error))
 

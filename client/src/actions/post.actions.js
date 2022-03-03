@@ -14,24 +14,24 @@ export const DELETE_COMMENT = "DELETE_COMMENT"
 
 export const getPosts = (num) => {
     return async (dispatch) => {
-        return axios 
-        .get(`${process.env.REACT_APP_API_URL}api/post`)
-        .then((res) => {
-            console.log(res)
-            const array = res.data.data.slice(0, num);
-            console.log(array)
-            dispatch({ type: GET_POSTS, payload: array })
-            dispatch({ type: GET_ALL_POSTS, payload: res.data });
-        })
-        .catch((err) => console.log(err))
+        return axios
+            .get(`${process.env.REACT_APP_API_URL}api/post`)
+            .then((res) => {
+                console.log(res)
+                const array = res.data.data.slice(0, num);
+                console.log(array)
+                dispatch({ type: GET_POSTS, payload: array })
+                dispatch({ type: GET_ALL_POSTS, payload: res.data });
+            })
+            .catch((err) => console.log(err))
     }
 }
 
 export const addPost = (data) => {
     return (dispatch) => {
-        return axios 
-        .post(`${process.env.REACT_APP_API_URL}api/post`, data)
-        
+        return axios
+            .post(`${process.env.REACT_APP_API_URL}api/post`, data)
+
     }
 }
 
@@ -42,11 +42,11 @@ export const updatePost = (id, message) => {
             url: `${process.env.REACT_APP_API_URL}api/post/${id}`,
             data: { message }
         })
-        .then((res) => {
-            console.log(res)
-            dispatch({ type: UPDATE_POST, payload: { message, id }})
-        })
-        .catch((err) => console.log(err));
+            .then((res) => {
+                console.log(res)
+                dispatch({ type: UPDATE_POST, payload: { message, id } })
+            })
+            .catch((err) => console.log(err));
     }
 }
 
@@ -55,13 +55,13 @@ export const deletePost = (postId) => {
     return async (dispatch) => {
         return axios({
             method: 'delete',
-            url: `${process.env.REACT_APP_API_URL}api/post/`+ postId,
+            url: `${process.env.REACT_APP_API_URL}api/post/` + postId,
         })
-        .then((res) => {
-            console.log(res)
-            dispatch({ type: DELETE_POST, payload: {postId}})
-        })
-        .catch((err) => console.log(err));
+            .then((res) => {
+                console.log(res)
+                dispatch({ type: DELETE_POST, payload: { postId } })
+            })
+            .catch((err) => console.log(err));
     }
 }
 
@@ -72,11 +72,11 @@ export const addComment = (postId, userId, message) => {
             url: `${process.env.REACT_APP_API_URL}api/comment/`,
             data: { postId, userId, message }
         })
-        .then((res) => {
-            console.log(res)
-            dispatch({ type: ADD_COMMENT, payload: { postId, userId, message }})
-        })
-        .catch((err) => console.log(err));
+            .then((res) => {
+                console.log(res)
+                dispatch({ type: ADD_COMMENT, payload: { postId, userId, message } })
+            })
+            .catch((err) => console.log(err));
     }
 }
 
@@ -87,11 +87,11 @@ export const editComment = (id, message) => {
             url: `${process.env.REACT_APP_API_URL}api/comment/${id}`,
             data: { id, message }
         })
-        .then((res) => {
-            console.log(res)
-            dispatch({ type: EDIT_COMMENT, payload: { id, message }})
-        })
-        .catch((err) => console.log(err));
+            .then((res) => {
+                console.log(res)
+                dispatch({ type: EDIT_COMMENT, payload: { id, message } })
+            })
+            .catch((err) => console.log(err));
     }
 }
 
@@ -102,10 +102,10 @@ export const deleteComment = (id) => {
             url: `${process.env.REACT_APP_API_URL}api/comment/${id}`,
             data: { id }
         })
-        .then((res) => {
-            console.log(res)
-            dispatch({ type: DELETE_COMMENT, payload: { id }})
-        })
-        .catch((err) => console.log(err));
+            .then((res) => {
+                console.log(res)
+                dispatch({ type: DELETE_COMMENT, payload: { id } })
+            })
+            .catch((err) => console.log(err));
     }
 }

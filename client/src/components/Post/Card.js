@@ -12,10 +12,10 @@ import DeleteCard from './DeleteCard';
 const Card = ({ post }) => {
 
 
-    
+
 
     // ici nous avons un spinner, en attendant de récupérer notre userData 
-    
+
     const [isLoading, setIsLoading] = useState(true);
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
@@ -25,21 +25,20 @@ const Card = ({ post }) => {
     const dispatch = useDispatch();
 
     const updateItem = async () => {
-        
-       if (textUpdate) {
+
+        if (textUpdate) {
             await dispatch(updatePost(post.id, textUpdate))
             dispatch(getPosts())
-            
-            
-       }
-       setIsUpdated(false);
+
+
+        }
+        setIsUpdated(false);
     }
 
     useEffect(() => {
         !isEmpty(usersData[0]) && setIsLoading(false);
     }, [usersData])
 
-    
 
     return (
         <li className='card-container' key={post.id}>
@@ -70,17 +69,17 @@ const Card = ({ post }) => {
                         </div>
                         {isUpdated === false && <p>{post.message}</p>}
                         {isUpdated && (
-                          <div className='update-post'>
-                              <textarea 
-                                  defaultValue={post.message}
-                                  onChange={(e) => setTextUpdate(e.target.value)}
-                              />
-                              <div className='button-container'>
-                               <button className='btn' onClick={updateItem}>
-                                   Valider modification
-                               </button>
-                              </div>
-                          </div>  
+                            <div className='update-post'>
+                                <textarea
+                                    defaultValue={post.message}
+                                    onChange={(e) => setTextUpdate(e.target.value)}
+                                />
+                                <div className='button-container'>
+                                    <button className='btn' onClick={updateItem}>
+                                        Valider modification
+                                    </button>
+                                </div>
+                            </div>
                         )}
                         {post.picture && <img src={post.picture} alt="card-pic" className='card-pic' />}
                         {post.video && (
@@ -95,7 +94,7 @@ const Card = ({ post }) => {
                             ></iframe>
                         )}
                         {userData.id === post.userId && !userData.admin && (
-                            
+
                             <div className='button-container'>
                                 <div onClick={() => setIsUpdated(!isUpdated)}>
                                     <img src='./img/edit.svg' alt='icon edit' />
@@ -104,10 +103,10 @@ const Card = ({ post }) => {
                             </div>
                         )}
                         {userData.admin && (
-                            
-                            <div className='button-container-admin'> 
-                            
-                            <div onClick={() => setIsUpdated(!isUpdated)}>
+
+                            <div className='button-container-admin'>
+
+                                <div onClick={() => setIsUpdated(!isUpdated)}>
                                     <img src='./img/edit.svg' alt='icon edit' />
                                 </div>
                                 <DeleteCard id={post.id} />
@@ -115,9 +114,9 @@ const Card = ({ post }) => {
                         )}
                         <div className='card-footer'>
                             <div className='comment-icon'>
-                                <img onClick={() => setShowComments(!showComments)} 
-                                src='./img/message1.svg' 
-                                alt='comment' />  
+                                <img onClick={() => setShowComments(!showComments)}
+                                    src='./img/message1.svg'
+                                    alt='comment' />
                             </div>
                         </div>
                         {showComments && <CardComments post={post} />}

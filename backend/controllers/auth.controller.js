@@ -6,6 +6,7 @@ const result = dotenv.config();
 const { users } = require('../models/index');
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 const { signInErrors, signUpErrors } = require('../utils/errors.utils')
+const apiLimiter = require('../middleware/rateLimit')
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_KEY_TOKEN, {
@@ -60,7 +61,8 @@ module.exports.signIn = async (req, res) => {
           // si le mot de passe est faux
 
           if (!controlPassword) {
-            return res.status(200).json({ error: "le mot de passe est incorrect" })
+            apiLimiter
+            return res.status(400).json({message: "le mot de passe est incorrect" })
           }
 
           // le mot de passe est correct

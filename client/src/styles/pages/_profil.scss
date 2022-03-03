@@ -54,7 +54,8 @@
           }
         }
         .active-btn {
-          background: $color-1;
+          background: rgb(199, 49, 49);
+          color: white;
 
           &:hover {
             background: $color-2;

@@ -1,4 +1,4 @@
-
+const rateLimit = require('../middleware/rateLimit')
 const router = require('express').Router();
 const { use } = require('../app');
 const authController = require('../controllers/auth.controller');
@@ -8,10 +8,9 @@ const password = require('../middleware/password')
 const multer = require('../middleware/multer.config');
 
 
-
 // auth
 router.post("/register", password, authController.signUp);
-router.post('/login', authController.signIn);
+router.post('/login',rateLimit.apiLimiter, authController.signIn);
 router.get('/logout', authController.logout);
 
 

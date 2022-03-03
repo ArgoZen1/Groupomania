@@ -1,12 +1,10 @@
 
-
-
 module.exports = (sequelize, DataTypes) => {
 
 
     const post = sequelize.define("post", {
-       
-    
+
+
         picture: {
             type: DataTypes.STRING,
             allowNull: true
@@ -22,13 +20,13 @@ module.exports = (sequelize, DataTypes) => {
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false
-        } 
-       
-       
+        }
+
+
 
     });
 
-  
+
 
     return post;
 };

@@ -18,8 +18,8 @@ const Log = (props) => {
 
   return (
     <div className="connection-form">
-    <p className='welcome'> Bienvenue sur votre réseau social d'entreprise </p>
-    <br />
+      <p className='welcome'> Bienvenue sur votre réseau social d'entreprise </p>
+      <br />
       <div className="form-container">
         <ul>
           <li

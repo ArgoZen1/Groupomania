@@ -1,6 +1,7 @@
 const cors = require('cors');
 
 const express = require('express');
+const helmet = require("helmet");
 const path = require('path');
 const cookieParser = require('cookie-parser');
 
@@ -27,6 +28,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -39,7 +42,7 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/user', userRoutes);
-app.use('/api/post',checkUser, postRoutes);
+app.use('/api/post', postRoutes);
 app.use('/api/comment', commentRoutes);
 
 

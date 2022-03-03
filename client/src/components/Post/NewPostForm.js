@@ -20,20 +20,20 @@ const NewPostForm = () => {
     }
 
     const handlePost = async () => {
-       if(message || postPicture || video) {
-           const data = new FormData();
-           data.append('userId', userData.id);
-           data.append('message', message);
-           if (file) data.append('file', file);
-           data.append('video', video);
+        if (message || postPicture || video) {
+            const data = new FormData();
+            data.append('userId', userData.id);
+            data.append('message', message);
+            if (file) data.append('file', file);
+            data.append('video', video);
 
-           await dispatch(addPost(data));
-           dispatch(getPosts())
-           cancelPost()
+            await dispatch(addPost(data));
+            dispatch(getPosts())
+            cancelPost()
 
-       } else {
-           alert("Veuillez entrer un message")
-       }
+        } else {
+            alert("Veuillez entrer un message")
+        }
     }
 
     const cancelPost = () => {
@@ -46,29 +46,30 @@ const NewPostForm = () => {
     const handleVideo = () => {
         let findLink = message.split(" ");
         for (let i = 0; i < findLink.length; i++) {
-          if (
-            findLink[i].includes("https://www.yout") ||
-            findLink[i].includes("https://yout")
-          ) {
-            let embed = findLink[i].replace("watch?v=", "embed/");
-            setVideo(embed.split("&")[0]);
-            findLink.splice(i, 1);
-            setMessage(findLink.join(" "));
-            setPostPicture('');
-          }
+            if (
+                findLink[i].includes("https://www.yout") ||
+                findLink[i].includes("https://yout")
+            ) {
+                let embed = findLink[i].replace("watch?v=", "embed/");
+                setVideo(embed.split("&")[0]);
+                findLink.splice(i, 1);
+                setMessage(findLink.join(" "));
+                setPostPicture('');
+            }
         }
-      };
-      handleVideo();
-    
+    };
+    handleVideo();
+
 
     return (
         <div className='post-container'>
+        
             <div className='data'>
 
             </div>
             <NavLink to="/profil">
                 <div className='user-info'>
-                    <img src={userData.picture} alt="user-img" />
+                    <img src={userData.picture} alt="user" />
                 </div>
             </NavLink>
             <div className='post-form'>
@@ -82,7 +83,7 @@ const NewPostForm = () => {
                 {message || postPicture || video.length > 20 ? (
                     <li className='card-container'>
                         <div className='card-left'>
-                            <img src={userData.picture} alt="user-picture" />
+                            <img src={userData.picture} alt="user" />
                         </div>
                         <div className='card-right'>
                             <div className='card-header'>
@@ -112,8 +113,10 @@ const NewPostForm = () => {
                     <div className='icon'>
                         {isEmpty(video) && (
                             <>
+                           
                                 <img src='./img/picture.svg' alt="img" />
-                                <input type="file" id="file-upload" name='file' accept='.jpg, .jpg, .png' onChange={(e) => handlePicture(e)} />
+                                <label>.
+                                <input type="file" id="file-upload" name='file' accept='.jpg, .jpg, .png' onChange={(e) => handlePicture(e)} /></label>
                             </>
                         )}
                         {video && (

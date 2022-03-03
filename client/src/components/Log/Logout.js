@@ -6,7 +6,7 @@ const Logout = () => {
     // pour enlever le cookie 
     const removeCookie = (key) => {
         if (window !== "undefined") {
-            cookie.remove(key, { expires: 1});
+            cookie.remove(key, { expires: 1 });
         }
     }
     const logout = async () => {
@@ -15,17 +15,17 @@ const Logout = () => {
             url: `${process.env.REACT_APP_API_URL}api/user/logout`,
             withCredentials: true
         })
-        .then(() => removeCookie('jwt'))
-        .catch((err) => console.log(err));
+            .then(() => removeCookie('jwt'))
+            .catch((err) => console.log(err));
 
         window.location = "/profil";
     }
     return (
         <li onClick={logout}>
-          <img src="./img/logout.svg" alt="logo logout" />
+            <img src="./img/logout.svg" alt="logo logout" />
         </li>
     );
-    
+
 };
 
 export default Logout;

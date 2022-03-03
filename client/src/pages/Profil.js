@@ -14,22 +14,22 @@ const Profil = () => {
 
 
     return (
-        
+
         <div className="profil-page">
-        
+
             {uid ? (
-    <UpdateProfil />
-) : (
-            <div className="log-container">
-            
+                <UpdateProfil />
+            ) : (
+                <div className="log-container">
 
-                <Log signin={false} signup={true} />
-                <div className="img-container">
-                    <img className='img-logo' src="./img/icon-logo2.png" alt="logo groupomania" />
+
+                    <Log signin={false} signup={true} />
+                    <div className="img-container">
+                        <img className='img-logo' src="./img/icon-logo2.png" alt="logo groupomania" />
+                    </div>
+
                 </div>
-
-            </div>
-)}
+            )}
         </div>
 
 

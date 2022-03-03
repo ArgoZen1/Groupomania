@@ -24,8 +24,8 @@ const SignUpForm = () => {
         const firstnameRegex = new RegExp(/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/);
 
         emailError.innerHTML = "";
-        console.log(emailRegex.test(email),"ici")
-        if(!emailRegex.test(email)) {
+        console.log(emailRegex.test(email), "ici")
+        if (!emailRegex.test(email)) {
             emailError.innerHTML = "e-mail incorrect"
         }
 
@@ -46,11 +46,11 @@ const SignUpForm = () => {
         passwordConfirmError.innerHTML = "";
         if (password !== controlPassword) {
             passwordConfirmError.innerHTML = "Les mots de passe ne correspondent pas"
-        } 
+        }
         console.log('test')
-        
-        
-        if (password == controlPassword && (emailRegex.test(email) == true) && (nameRegex.test(name) == true) && (firstnameRegex.test(firstname) == true) && (passwordRegex.test(password) == true)) {
+
+
+        if (password === controlPassword && (emailRegex.test(email) === true) && (nameRegex.test(name) === true) && (firstnameRegex.test(firstname) === true) && (passwordRegex.test(password) === true)) {
             console.log('test2')
             await axios({
                 method: "post",
@@ -69,14 +69,14 @@ const SignUpForm = () => {
                     if (res.data.errors) {
 
                         emailError.innerHTML = res.data.errors.email;
-                        
+
                     } else {
                         setFormSubmit(true);
                     }
-                    
+
                 })
                 .catch((err) => console.log(err))
-            }
+        }
     };
 
 

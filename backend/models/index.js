@@ -12,13 +12,13 @@ db.users = require("../models/user.model")(sequelize, Sequelize)
 db.posts = require("../models/post.model")(sequelize, Sequelize)
 db.comments = require('./comment.model')(sequelize, Sequelize)
 
-db.posts.belongsTo(db.users);
+db.posts.belongsTo(db.users , { onDelete: 'cascade' });
 db.users.hasMany(db.posts);
 
 db.posts.hasMany(db.comments)
-db.comments.belongsTo(db.posts)
+db.comments.belongsTo(db.posts, { onDelete: 'cascade' })
 
 db.users.hasMany(db.comments)
-db.comments.belongsTo(db.users)
+db.comments.belongsTo(db.users , { onDelete: 'cascade' })
 
 module.exports = db;
