@@ -1,5 +1,17 @@
-Projet Groupomania Openclassrooms 
-Créer un réseau social d'entreprise 
+# Créer un réseau social d'entreprise
+
+- Authentifier un utilisateur et maintenir sa session
+- Personnaliser le contenu envoyé à un client web
+- Gérer un stockage de données à l'aide de SQL
+- Implémenter un stockage de données sécurisé en utilisant SQL
+
+Langages et technologies: 
+- Javascript (Front: React.js, Back: Node.js),
+- Redux
+- Mysql,
+- Express,
+- Sequelize,
+- Sass 
 
 Stack :
 frontend:
@@ -23,9 +35,9 @@ Pour clôner le projet :
 2. Il faudra créer une DB Groupomania avec les informations :
 les tables seront créees avec sequelize.sync()
 
-  USER: "ArgoZen",
-  PASSWORD: "A1719735bcd@",
-  DB: "groupomania" 
+  USER: "*****",
+  PASSWORD: "******",
+  DB: "******" 
 
 3. positionnez-vous dans le dossier backend (cd backend) => nodemon server (sur le port 5000)
 
