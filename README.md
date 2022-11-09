@@ -1,49 +1,33 @@
-# Créer un réseau social d'entreprise
+<h1 align="center">Voici Groupomania</h1>
+<h3 align="center">Créez un réseau social d’entreprise</h3>
 
-- Authentifier un utilisateur et maintenir sa session
-- Personnaliser le contenu envoyé à un client web
-- Gérer un stockage de données à l'aide de SQL
-- Implémenter un stockage de données sécurisé en utilisant SQL
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=argozen1&label=Profile%20views&color=0e75b6&style=flat" alt="argozen1" /> </p>
 
-Langages et technologies: 
-- Javascript (Front: React.js, Back: Node.js),
-- Redux
-- Mysql,
-- Express,
-- Sequelize,
-- Sass 
+- 🌱 j'ai appris **à créer un réseau social de A à Z**
 
-Stack :
-frontend:
+- 👨‍💻 Tous mes projets sont disponibles sur [https://ares-romain.com/](https://ares-romain.com/)
 
-1. React.js
-2. Axios
-3. cookies
+- 💬 Competences **HTML, CSS, SASS, React, Redux, Node-js, Express ect..**
 
-Backend: 
-Node.js
-Express
-Dotenv
-Mysql => Sequelize 
+- 📫 Comment me joindre **argolys@outlook.com**
 
-Pour clôner le projet : 
+- 📄 Connaître mes expériences [https://www.linkedin.com/in/romain-ares/](https://www.linkedin.com/in/romain-ares/)
 
-1. Git clôner le projet
+- ⚡ Fait amusant **Je suis resté bloquer une heure parce que ma syntaxe n'était pas bonne !**
 
-3. vous pouvez verifier les dépendances dans le package.json
+<h3 align="left">Connect with me:</h3>
+<p align="left">
+<a href="https://dev.to/argozen1" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/devto.svg" alt="argozen1" height="30" width="40" /></a>
+<a href="https://linkedin.com/in//romain-ares" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="/romain-ares" height="30" width="40" /></a>
+<a href="https://dribbble.com/ares" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/dribbble.svg" alt="ares" height="30" width="40" /></a>
+</p>
 
-2. Il faudra créer une DB Groupomania avec les informations :
-les tables seront créees avec sequelize.sync()
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://mariadb.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/mariadb/mariadb-icon.svg" alt="mariadb" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> <a href="https://redux.js.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/> </a> <a href="https://www.sqlite.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg" alt="sqlite" width="40" height="40"/> </a> </p>
 
-  USER: "*****",
-  PASSWORD: "******",
-  DB: "******" 
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=argozen1&show_icons=true&locale=en&layout=compact" alt="argozen1" /></p>
 
-3. positionnez-vous dans le dossier backend (cd backend) => nodemon server (sur le port 5000)
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=argozen1&show_icons=true&locale=en" alt="argozen1" /></p>
 
-4. positionnez-vous dans le dossier client (cd client) => npm run start (sur le port 3000)
-
-5. vous pouvez maintenant vous inscrire et vous connecter avec votre compte.
-
-N'oubliez pas de vous fier aux fichiers .env-example pour les variables d'environnement. 
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=argozen1&" alt="argozen1" /></p>
 
