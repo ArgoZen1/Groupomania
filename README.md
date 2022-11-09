@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/95536872/200814129-704a41df-1f25-40c7-952a-4c4a30c53113.png)
+
+
 <h1 align="center">Voici Groupomania</h1>
 <h3 align="center">Créez un réseau social d’entreprise</h3>
 
